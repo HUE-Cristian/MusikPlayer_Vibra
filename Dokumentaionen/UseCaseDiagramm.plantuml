@@ -1,0 +1,45 @@
+@startuml UseCaseDiagram
+
+title "UseCaseDiagramm Musikapp, Modul 404"
+
+actor "User" as user
+    usecase "App Starten" as start
+
+package Songauswahl {
+    usecase "Song xy auswählen" as songwahl
+    }
+
+package MP3Player {
+    usecase "Songspielen" as songstart
+    usecase "Pause-Button" as pause
+    usecase "Play-Button" as play
+    usecase "replay-Button" as replay
+    usecase "previous-Button" as previous
+    usecase "next-Button" as next
+    usecase "gleicherSong" as same
+    usecase "Musikstop" as stop
+    usecase "Songweiter" as continue
+    usecase "andererSong" as other
+    usecase "letzter song" as last
+    usecase "erster Song" as first
+    }
+
+user --> start
+start --> songwahl
+songwahl --> songstart
+songstart ..> songwahl : Auf "zurück" klicken
+songstart ..> previous : klicken
+songstart ..> next : klicken
+songstart ..> pause : klicken
+songstart ..> replay : klicken
+previous --> other : zun nächsten Song spulen
+next --> other : zum vorherigen Song spulen
+other ..> last : klicken
+pause --> stop : Song wird pausiert
+stop ..> play : klicken
+play --> continue : Song spielt weiter
+replay --> same : Song wird wiederholt
+first --> last : (zurückspulen zum ersten Song) letzter Song wird gespielt
+last --> first : (vorspulen zum letzten Song) erster Song wird gespielt
+
+@enduml

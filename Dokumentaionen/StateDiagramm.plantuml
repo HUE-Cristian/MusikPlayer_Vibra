@@ -1,0 +1,40 @@
+@startuml StateDiagramm
+
+title "StateDiagramm Musikapp, Modul 404"
+
+state Musik_State{
+
+state Data_State{
+    [*] --> erhalte_erlaubnis
+    erhalte_erlaubnis --> keine_erlaubnis
+    [*] --> schon_erlaubnis
+    erhalte_erlaubnis --> hole_Songs
+    schon_erlaubnis --> hole_Songs
+    hole_Songs --> songs_anzeigen
+    keine_erlaubnis --> [*]
+    }
+
+
+
+state Decision_State{
+    [*] --> entscheiden
+    songs_anzeigen --> entscheiden
+    entscheiden --> song_laden
+    song_laden --> [*]
+    }
+
+state Player_State{
+    [*] --> song_start
+    song_start --> pausieren
+    song_start --> vorspulen
+    song_start --> zurückspulen
+    song_start --> replay
+    vorspulen --> [*]
+    zurückspulen --> [*]
+    pausieren --> [*]
+    replay --> [*]
+    }
+
+}
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml Klassendiagramm
+
+title "Klassendiagramm Musikapp, Modul 404"
+
+class MainActivity{
+    + MainActivity () : class
+    + onCreate () : void
+    + Ueberprueferlaubnis () : boolean
+    + Holerlaubnis () : void
+    }
+
+class AudioModel{
+    + AudioModel (String pfad, String name, String dauer)
+    + getPfad () : String
+    + setPfad (String pfad)
+    + getName () : String
+    + setName (String name)
+    }
+
+class MusikInfo{
+    + MusikInfo () : class
+    + onCreate () : void
+    + setAlleDaten () : void
+    - spieleMusik () : void
+    - nextSong () : void
+    - previousSong () : void
+    - private () : void
+    - pausePlay () : void
+    }
+
+class MusikListe{
+    + MusikListe () : class
+    + MusikListe (ArrayList<AudioModel> songListe, Context context)
+    + onCreateViewHolder (ViewGroup parent, int viewType)
+    + onBindViewHolder (ViewHolder holder, @SuppressLint("RecyclerView") int position) : void
+    + onClick (View view) : void
+    + getItemCount () : int
+    + ViewHolder () : class
+    }
+
+class MP3Player{
+    + MP3Player () : class
+    + static getMP () : MediaPlayer
+    + static aktuellausgewaelt () : int 
+    }
+
+@enduml
